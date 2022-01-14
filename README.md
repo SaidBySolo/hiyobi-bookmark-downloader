@@ -5,8 +5,7 @@
 ## 사용법
 
 1. ``pip install requests``
-2. config.py 수정
-3. ``python main.py``
+2. ``python main.py``
 
 ## 빌드
 

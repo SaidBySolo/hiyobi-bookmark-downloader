@@ -1,7 +1,6 @@
 import json
 from typing import Any, List
 from requests import Session
-from config import email, password
 
 headers = {
     "Origin": "https://hiyobi.me",
@@ -14,6 +13,9 @@ session = Session()
 session.headers.update(headers)
 
 print("계정 정보 가져오는중")
+
+email = input("이메일: ")
+password = input("패스워드: ")
 r = session.post(
     "https://api.hiyobi.me/user/login",
     headers={
@@ -23,7 +25,11 @@ r = session.post(
     },
     json={"email": email, "password": password, "remember": True},
 )
+
+r.raise_for_status()
+
 print("성공적으로 가져왔습니다.")
+
 r = session.post("https://api.hiyobi.me/bookmark/1")
 
 bookmark_total = r.json()["count"]
